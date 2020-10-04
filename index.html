@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<title>House Pricing Prediction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<style>
+#heading1{
+  font-family:"Times New Roman", Times, serif;
+}
+a{
+  color:black;
+}
+html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-large w3-light-grey">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block">Home</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block">About</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#get quotations" class="w3-button w3-block">Get Quotations</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#contact" class="w3-button w3-block">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="w3-content div1" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+  <div class="w3-panel">
+    <h1 id="heading1"><i class="fa fa-home" aria-hidden="true"></i><b>&nbsp;THE BROKER : House Price Predictor&nbsp;</b><i class="fa fa-inr" aria-hidden="true"></i></h1>
+  </div>
+</div>
+
+  <!-- Slideshow -->
+  <div class="w3-container">
+    <div class="w3-display-container mySlides">
+      <img src="https://images.unsplash.com/photo-1543420000-c998ec12450f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" style="width:100%" >
+      <div class="w3-display-topleft w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">ASSURITY</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img src="https://images.unsplash.com/photo-1521795826459-f864203ed921?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1058&q=80" style="width:100%">
+      <div class="w3-display-middle w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">CLASS</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img src="https://images.unsplash.com/photo-1520604118753-e44d2b46a95d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1058&q=80" style="width:100%">
+      <div class="w3-display-topright w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">ELEGANCE</span>
+      </div>
+    </div>
+
+    <!-- Slideshow next/previous buttons -->
+    <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
+      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
+      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
+
+      <div class="w3-center">
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="w3-row w3-container">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">What We Offer</span>
+    </div>
+    <div class="w3-col l3 m6 w3-light-grey w3-container w3-padding-16">
+      <h3>Design</h3>
+      <p>We assure you in providing best property deals in town.</p>
+    </div>
+
+    <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
+      <h3>Pricing</h3>
+      <p>Our aim is to provide best property deals and prices in town.</p>
+    </div>
+
+    <div class="w3-col l3 m6 w3-dark-grey w3-container w3-padding-16">
+      <h3>Consultation</h3>
+      <p>We have everything from budget buys to lavish outlooks.</p>
+    </div>
+
+    <div class="w3-col l3 m6 w3-black w3-container w3-padding-16">
+      <h3>Promises</h3>
+      <p>World class customer experience and quality in best prices.</p>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="w3-row-padding" id="about">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Who We Are</span>
+    </div>
+
+    <div class="w3-content" style="max-width:700px">
+      <p>The Wizard of Oz got it right: There's no place like home. I mean, where else can you walk around without pants and not break any rules? A home is the physical embodiment of the people who inhabit it, so it's no wonder that it's such a special place for so many. Celebrate the feeling of being home with these words of wisdom that capture that inner peace we all feel at our favorite place.</p>
+      <p><i>Machine Learning + Real Estate</i> is what we have got to serve .</p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <p><i>“Home is a shelter from storms-all sorts of storms.”-William J. Bennett</i></p>
+        <p>Owner: Ismite</p>
+      </div>
+</div>
+</div>
+  <!-- Get Quotations -->
+
+<div class="jumbotron jumbotron-fluid">
+<div class="container">
+  <div class="w3-center w3-padding-64" id="get quotations">
+    <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Get Quotation</span>
+</div>
+    <div class="form-group row">
+      <label for="Squareft" class="col-sm-2 col-form-label"><b>Area (in Square Feets)</b></label>
+      <div class="col-sm-10">
+        <input type="float" class="form-control floatLabel" id="uiSqft" name="Squareft" >
+      </div>
+    </div>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0"><b>BHK</b></legend>
+        <div class="col-sm-10">
+          <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bhk-1" name="uiBHK" value="1">
+  <label class="form-check-label" for="radio-bhk-1">1 BHK</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked>
+  <label class="form-check-label" for="radio-bhk-2">2 BHK</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bhk-3" name="uiBHK" value="3">
+  <label class="form-check-label" for="radio-bhk-3">3 BHK</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bhk-4" name="uiBHK" value="4">
+  <label class="form-check-label" for="radio-bhk-4">4 BHK</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bhk-5" name="uiBHK" value="5">
+  <label class="form-check-label" for="radio-bhk-5">5 BHK</label>
+</div>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0"><b>Bathrooms</b></legend>
+        <div class="col-sm-10">
+          <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bath-1" name="uiBathrooms" value="1">
+  <label class="form-check-label" for="radio-bath-1">1</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bath-2" name="uiBathrooms" value="2">
+  <label class="form-check-label" for="radio-bath-2">2</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bath-3" name="uiBathrooms" value="3">
+  <label class="form-check-label" for="radio-bath-3">3</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bath-4" name="uiBathrooms" value="4">
+  <label class="form-check-label" for="radio-bath-4">4</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="radio-bath-5" name="uiBathrooms" value="5">
+  <label class="form-check-label" for="radio-bath-5">5</label>
+</div>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <div class="row">
+        <label for="" class="col-sm-2 col-form-label"><b>Location</b></label>
+         <div class="btn-group">
+           <select class="location" name="" id="uiLocations">
+             <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+         		 <option>Electronic City</option>
+             <option>Rajaji Nagar</option>
+           </select>
+         </div>
+       </div>
+     </fieldset>
+     <div class="form-group row ">
+      <div class="col-sm-10 ">
+        <button type="button" class="btn btn-primary" onclick="onClickedEstimatePrice()" id="btn" >Get Estimated Price</button>
+      </div>
+    </div>
+    </div>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="uiEstimatedPrice" class="result">	<h2 id="res"></h2> </div>
+  </div>
+
+</div>
+
+<div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Contact</h4>
+        </div>
+        <div class="w3-container w3-xlarge w3-padding">
+          <a href="https://www.instagram.com/_a_lonewolf"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+          <a href="http://www.facebook.com/aakash.misra.374"<a href=""><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+          <a href="http://www.twitter.com/positive_witty"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+          <a href="http://www.linkedin.com/in/aakash-misra-5b488219b"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+        </div>
+       </div>
+     <hr>
+
+<!-- Footer -->
+
+<footer class="w3-container w3-padding-32 w3-light-grey w3-center">
+  <h4>A ML/AI project.</h4>
+  <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+</footer>
+
+
+<script>
+// Slideshow
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demodots");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-white";
+}
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+//var btn = document.getElementById("btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+//btn.onclick = function() {
+//  modal.style.display = "block";
+//}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
